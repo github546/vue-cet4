@@ -27,6 +27,10 @@ const router = new VueRouter({
 var vm = new Vue({
     router,
     store,
+    data:{
+        examTime:'2017-6-17',
+        preExamDay:'30'
+    },
     template:`
         <div>
             <transition name="fade" mode="out-in">
