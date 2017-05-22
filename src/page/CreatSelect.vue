@@ -34,13 +34,14 @@
                 <div class="radioSm" id="data-60" @click="preExamDaySelect('data-60')"><span>60天</span></div>
                 <div class="radioSm selected" id="data-30" @click="preExamDaySelect('data-30')"><span>30天</span></div>
             </div>
-            <BottomBtn @click.native="toCreatFinish"  value="开始吧" color="bg-orange"></BottomBtn>
+            <bottomBtn @click.native="go([$router,'creatfinish'])"  value="开始吧" color="bg-orange"></bottomBtn>
         </div>
     </div>
 </template>
 
 <script>
-import BottomBtn from '../components/BottomBtn.vue'
+import { mapMutations } from 'vuex'
+import bottomBtn from '../components/BottomBtn.vue'
 export default{
     name:'creatSelect',
     data(){
@@ -48,11 +49,14 @@ export default{
             radioMore:false
         }
     },
-    components:{ BottomBtn },
+    components:{ bottomBtn },
     methods:{
-        toCreatFinish:function(){
-            this.$router.push({path:'/creatfinish'})
-        },
+        ...mapMutations([
+            'go'
+        ]),
+        // toCreatFinish:function(){
+        //     this.$router.push({path:'/creatfinish'})
+        // },
         examTimeSelect:function(id){
             var obj = document.getElementsByClassName("radioLg")
             for(var i=0;i<obj.length;i++){

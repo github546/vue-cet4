@@ -1,6 +1,6 @@
 <template>
     <div id="creatFinish">
-        <HeaderLg bigtitle="CET-4" notetitle="四级单词记忆管理"></HeaderLg>
+        <headerLg bigtitle="CET-4" notetitle="四级单词记忆管理"></headerLg>
         <div class="padding-md">
             <h2>姓名</h2>
             <input v-model="name" type="text" name="" placeholder="建议输入真实姓名，方便好友找到你">
@@ -12,7 +12,7 @@
                 <div class="radioSm" id="data-0" @click="sexSelect('data-0')"><span>女</span></div>
             </div>
         </div>
-        <BottomBtn @click.native="toCreatSucceed"  value="完成注册" color="bg-orange"></BottomBtn>
+        <bottomBtn @click.native="toCreatSucceed"  value="完成注册" color="bg-orange"></bottomBtn>
     </div>
 </template>
 
@@ -22,8 +22,8 @@ import Vue from 'vue'
 import VueResource from 'vue-resource'
 Vue.use(VueResource)
 
-import HeaderLg from '../components/HeaderLg.vue'
-import BottomBtn from '../components/BottomBtn.vue'
+import headerLg from '../components/HeaderLg.vue'
+import bottomBtn from '../components/BottomBtn.vue'
 export default{
     name:'creatFinish',
     data(){
@@ -33,7 +33,7 @@ export default{
             sex:'1'
         }
     },
-    components:{ HeaderLg,BottomBtn },
+    components:{ headerLg,bottomBtn },
     methods:{
         toCreatSucceed:function(){
             var that = this

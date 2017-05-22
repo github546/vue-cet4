@@ -1,15 +1,16 @@
 <template>
     <div id="creatSucceed">
-        <HeaderMd title="CET-4" show="n"></HeaderMd>
+        <headerMd title="CET-4" show="n"></headerMd>
         <p class="succeed">注册成功</p>
         <p class="yjz"><span>+{{jyzNum}}</span>经验值</p>
-        <BottomBtn @click.native="toIndex"  value="查看计划" color="bg-orange"></BottomBtn>
+        <bottomBtn @click.native="go([$router,'index'])"  value="查看计划" color="bg-orange"></bottomBtn>
     </div>
 </template>
 
 <script>
-import HeaderMd from '../components/HeaderMd.vue'
-import BottomBtn from '../components/BottomBtn.vue'
+import { mapMutations } from 'vuex'
+import headerMd from '../components/HeaderMd.vue'
+import bottomBtn from '../components/BottomBtn.vue'
 export default{
     name:'creatSucceed',
     data(){
@@ -17,11 +18,14 @@ export default{
             jyzNum:'600'
         }
     },
-    components:{ HeaderMd,BottomBtn },
+    components:{ headerMd,bottomBtn },
     methods:{
-        toIndex:function(){
-            this.$router.push({path:'/index'})
-        }
+        ...mapMutations([
+            'go'
+        ])
+        // toIndex:function(){
+        //     this.$router.push({path:'/index'}) //路由跳转vuex是不刷新的
+        // }
     }
 }
 </script>

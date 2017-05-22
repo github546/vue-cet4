@@ -14,11 +14,27 @@ xmlhttp.onreadystatechange = function(){
         state = {serverIP:0}
     }
 }
-// xmlhttp.open("Get","http://192.168.31.160/json/users.php",false);
-xmlhttp.open("Get","http://192.168.1.233/json/users.php",false);
+xmlhttp.open("Get","http://192.168.31.160/json/users.php",false);
+//xmlhttp.open("Get","http://192.168.1.233/json/users.php",false);
 xmlhttp.send();
 //console.log(state);
 
+const getters = {
+	stime:function(){
+		var mydate = new Date();
+		return mydate.getTime()
+	}
+}
+
+const mutations = {
+	go:function(state,obj){
+		obj[0].push({path:'/'+ obj[1]})
+	}
+}
+
 export default new Vuex.Store({
-    state
+    state,
+    getters,
+    mutations
+
 })

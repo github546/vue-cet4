@@ -4,11 +4,16 @@ import VueRouter from 'vue-router'
 Vue.use(VueRouter)
 
 require('!style-loader!css-loader!less-loader!./assets/css/main.less');
+require('!style-loader!css-loader!less-loader!./assets/css/animate.min.css');
+
 import Index from './page/Index.vue'
 import Creat from './page/Creat.vue'
 import CreatSelect from './page/CreatSelect.vue'
 import CreatFinish from './page/CreatFinish.vue'
 import CreatSucceed from './page/CreatSucceed.vue'
+import ReviseBegin from './page/ReviseBegin.vue'
+import Revise from './page/Revise.vue'
+import ReviseError from './page/ReviseError.vue'
 import ErrorPage from './page/ErrorPage.vue'
 import Page404 from './page/Page404.vue'
 
@@ -22,6 +27,9 @@ const router = new VueRouter({
         {path:'/creatselect',component:CreatSelect},
         {path:'/creatfinish',component:CreatFinish},
         {path:'/creatsucceed',component:CreatSucceed},
+        {path:'/revisebegin',component:ReviseBegin},
+        {path:'/revise',component:Revise},
+        {path:'/reviseerror',component:ReviseError},
         {path:'/errorpage',component:ErrorPage},
         {path:'*',component:Page404}
 	]
@@ -33,7 +41,8 @@ var vm = new Vue({
     store,
     data:{
         examTime:'2017-6-17',
-        preExamDay:'30'
+        preExamDay:'30',
+        come:0
     },
     template:`
         <div>
