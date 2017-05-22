@@ -64,7 +64,7 @@ export default{
 	    		},2000)
 	    	}else{
 	    		//跳转到答题失败页面
-	    		this.$router.push({path:'/reviseerror'})
+	    		this.$router.push({path:'/reviseerror',query:{errorForm:this.writeForm,form:this.form,meaning:this.meaning}})
 	    	}
 	    }
     },

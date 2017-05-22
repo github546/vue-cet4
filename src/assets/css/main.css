@@ -116,6 +116,9 @@ h6 {
 .text-size-lg {
   font-size: 150%;
 }
+.bg-gray {
+  background: #eeeeee;
+}
 .bg-orange {
   background: #eb6419;
 }
