@@ -12,7 +12,7 @@
                 <p class="bd" v-else>未完成<span>经验-8</span></p>
             </div>
         </div>
-        <div class="planlistMore" v-text="jiazaiTxt"></div>
+        <div class="planlistMore" v-text="jiazaiTxt" @click="loadMore"></div>
         <!--底部按钮-->
         <div class="doubleBtn bottomBtn">
             <div class="btnLeft bg-green" @click="go([$router,'plan'])">继续计划</div>
@@ -67,6 +67,16 @@ export default{
                 that.$router.push({path:'/errorpage'})
             })
         },
+        loadMore:function(){
+            var that =this
+            if(that.curpage < that.allpage){
+                that.curpage ++;
+                that.getPlanList(that.curpage)
+            }
+            if(that.curpage == that.allpage){
+                that.jiazaiTxt=''
+            }
+        },
         scrollFunc:function(e){
             let that = this
             let windowHeight = window.screen.height//可见高度
@@ -83,14 +93,14 @@ export default{
             }
         }
     },
-    created(){
-        //监听滚动事件
-        /*注册事件*/
-        if(document.addEventListener){
-            document.addEventListener('DOMMouseScroll',this.scrollFunc,false);
-         }//W3C
-        window.onmousewheel=document.onmousewheel=this.scrollFunc;
-    },
+    // created(){
+    //     //监听滚动事件
+    //     /*注册事件*/
+    //     if(document.addEventListener){
+    //         document.addEventListener('DOMMouseScroll',this.scrollFunc,false);
+    //      }//W3C
+    //     window.onmousewheel=document.onmousewheel=this.scrollFunc;
+    // },
     mounted(){
         this.getPlanList()
     }
