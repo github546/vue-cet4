@@ -8,7 +8,7 @@
                 <li>
                     <p class="year">2017年</p>
                     <div class="month">
-                        <NavBtn time="6月17日" isSelected="true" size="time-size"></NavBtn>
+                        <NavBtn @click.native="selected" :isSelected="isTrue" time="6月17日" size="time-size"></NavBtn>
                         <NavBtn time="12月18日" isSelected="" size="time-size"></NavBtn>
                     </div>
                 </li>
@@ -30,10 +30,19 @@ import BottomBtn from '../components/bottom-btn.vue'
 import NavBtn from '../components/nav-btn.vue'
 export default{
     name:'creatSelect',
+    data(){
+        return{
+            isTrue:'true'
+        }
+    },
     components:{ BottomBtn,NavBtn },
     methods:{
         goCreatSelect:function(){
             this.$router.push({path:'/creatselect'})
+        },
+        selected:function(){
+            this.isTrue = !this.isTrue;
+            console.log(this.isTrue);
         }
     }
 }
