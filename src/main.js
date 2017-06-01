@@ -8,6 +8,7 @@ Vue.use(VueRouter)
 require('!style-loader!css-loader!less-loader!./assets/css/main.less');
 import Index from './page/Index.vue'
 import Creat from './page/Creat.vue'
+import Page404 from './page/Page404.vue'
 
 const router = new VueRouter({
 	mode:'history',
@@ -15,7 +16,8 @@ const router = new VueRouter({
 	routes:[
 	    {path:'/',component:Index},
         {path:'/index',component:Index},
-	    {path:'/creat',component:Creat}
+	    {path:'/creat',component:Creat},
+        {path:'*',component:Page404}
 	]
 })
 
@@ -31,6 +33,11 @@ var vm = new Vue({
         </div>
     `,
     beforeCreate:function(){
+        //和服务器终端连接 跳转
+        if(this.$store.state.serverIP == 0){
+            router.push({path:'/error'})
+        }
+        //判断是否为注册用户
         if(this.$store.state.newbi == 1){
             router.push({path:'/index'})
         }else{

@@ -16,6 +16,6 @@ export default{
 </script>
 
 <style lang="less" scoped>
-@import "../assets/css/variables.less";	
+@import "../assets/css/variables.less";
 #index{color:@white;background-color: @green;width: 100%;height: 400px;}
 </style>
