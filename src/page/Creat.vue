@@ -7,19 +7,19 @@
             <p class="text-indent">当然你不会感觉到枯燥，养成式记忆办法，规划了单词的遗忘曲线，同时，你可以邀请更多的小伙伴一起参与，或加入更多社区。有趣的单词接龙，俚语猜猜看，作文漂流瓶，更多的活动和游戏，来吧！美哒哒的学英语。</p>
             <p class="text-align-right">会会</p>
         </div>
-        <NavBtn  btnvalue="创建计划"></NavBtn>
+        <BottomBtn @click.native="goCreatSelect"  value="创建计划" color="bg-orange" class="bottomBtn"></BottomBtn>
 	</div>
 </template>
 
 <script>
 import HeaderLg from '../components/header-bg.vue'
-import NavBtn from '../components/nav-btn.vue'
+import BottomBtn from '../components/bottom-btn.vue'
 export default{
 	name:'creat',
-    components:{ HeaderLg,NavBtn },
+    components:{ HeaderLg,BottomBtn },
 	methods:{
-		goIndex:function(){
-			this.$router.push({path:'/index'})
+		goCreatSelect:function(){
+			this.$router.push({path:'/creatselect'})
 		}
 	}
 }
@@ -27,6 +27,6 @@ export default{
 
 <style lang="less" scoped>
 @import "../assets/css/variables.less";
-.text-text{font-size:95%;}
+.text-text{font-size:95%;padding-bottom:60px;}
 p{padding-bottom:6px;line-height: 20px;}
 </style>

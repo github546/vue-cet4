@@ -8,6 +8,7 @@ Vue.use(VueRouter)
 require('!style-loader!css-loader!less-loader!./assets/css/main.less');
 import Index from './page/Index.vue'
 import Creat from './page/Creat.vue'
+import CreatSelect from './page/CreatSelect.vue'
 import Page404 from './page/Page404.vue'
 
 const router = new VueRouter({
@@ -17,6 +18,7 @@ const router = new VueRouter({
 	    {path:'/',component:Index},
         {path:'/index',component:Index},
 	    {path:'/creat',component:Creat},
+        {path:'/creatselect',component:CreatSelect},
         {path:'*',component:Page404}
 	]
 })
