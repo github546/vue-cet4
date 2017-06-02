@@ -8,33 +8,33 @@
                 <li>
                     <p class="year">2017年</p>
                     <div class="month">
-                        <div class="radioLg selected" id="date-2017-6-17" @click="dateSelect('date-2017-6-17')"><span>6月17日</span></div>
-                        <div class="radioLg" id="date-2017-12-18" @click="dateSelect('date-2017-12-18')"><span>12月18日</span></div>
+                        <div class="radioLg selected" id="data-2017-6-17" @click="examTimeSelect('data-2017-6-17')"><span>6月17日</span></div>
+                        <div class="radioLg" id="data-2017-12-18" @click="examTimeSelect('data-2017-12-18')"><span>12月18日</span></div>
                     </div>
                 </li>
                 <li v-show="radioMore">
                     <p class="year">2018年</p>
                     <div class="month">
-                        <div class="radioLg" id="date-2018-6-17" @click="dateSelect('date-2018-6-17')"><span>6月17日</span></div>
-                        <div class="radioLg" id="date-2018-12-18" @click="dateSelect('date-2018-12-18')"><span>12月18日</span></div>
+                        <div class="radioLg" id="data-2018-6-17" @click="examTimeSelect('data-2018-6-17')"><span>6月17日</span></div>
+                        <div class="radioLg" id="data-2018-12-18" @click="examTimeSelect('data-2018-12-18')"><span>12月18日</span></div>
                     </div>
                 </li>
                 <li v-show="radioMore">
                     <p class="year">2019年</p>
                     <div class="month">
-                        <div class="radioLg" id="date-2019-6-17" @click="dateSelect('date-2019-6-17')"><span>6月17日</span></div>
-                        <div class="radioLg" id="date-2019-12-18" @click="dateSelect('date-2019-12-18')"><span>12月18日</span></div>
+                        <div class="radioLg" id="data-2019-6-17" @click="examTimeSelect('data-2019-6-17')"><span>6月17日</span></div>
+                        <div class="radioLg" id="data-2019-12-18" @click="examTimeSelect('data-2019-12-18')"><span>12月18日</span></div>
                     </div>
                 </li>
             </ul>
             <h3>预备考试时间</h3>
             <p class="smtit">设置考试前多少天完成计划</p>
             <div class="syDay">
-                <div class="radioSm" id="date-90" @click="daysSelect('date-90')"><span>90天</span></div>
-                <div class="radioSm" id="date-60" @click="daysSelect('date-60')"><span>60天</span></div>
-                <div class="radioSm selected" id="date-30" @click="daysSelect('date-30')"><span>30天</span></div>
+                <div class="radioSm" id="data-90" @click="preExamDaySelect('data-90')"><span>90天</span></div>
+                <div class="radioSm" id="data-60" @click="preExamDaySelect('data-60')"><span>60天</span></div>
+                <div class="radioSm selected" id="data-30" @click="preExamDaySelect('data-30')"><span>30天</span></div>
             </div>
-            <BottomBtn @click.native="goCreatSelect"  value="开始吧" color="bg-orange"></BottomBtn>
+            <BottomBtn @click.native="toCreatFinish"  value="开始吧" color="bg-orange"></BottomBtn>
         </div>
     </div>
 </template>
@@ -50,25 +50,25 @@ export default{
     },
     components:{ BottomBtn },
     methods:{
-        goCreatSelect:function(){
-            this.$router.push({path:'/creatselect'})
+        toCreatFinish:function(){
+            this.$router.push({path:'/creatfinish'})
         },
-        dateSelect:function(id){
+        examTimeSelect:function(id){
             var obj = document.getElementsByClassName("radioLg")
             for(var i=0;i<obj.length;i++){
                 obj[i].setAttribute("class","radioLg");
             }
             document.getElementById(id).setAttribute("class","radioLg selected");
-            this.$parent.examTime = id.replace(/date-/g,'');
+            this.$parent.examTime = id.replace(/data-/g,'');
             // console.log(this.$parent.examTime)
         },
-        daysSelect:function(id){
+        preExamDaySelect:function(id){
             var obj = document.getElementsByClassName("radioSm")
             for(var i=0;i<obj.length;i++){
                 obj[i].setAttribute("class","radioSm");
             }
             document.getElementById(id).setAttribute("class","radioSm selected");
-            this.$parent.preExamDay = id.replace(/date-/g,'');
+            this.$parent.preExamDay = id.replace(/data-/g,'');
             // console.log(this.$parent.preExamDay)
         },
         toggle:function(){
@@ -85,7 +85,7 @@ h2{color:@black;font-size:@font-size-md;font-weight: bold;padding:10px 0 12px;}
 .noteTit{color:@gray-light;font-size:80%;}
 .select-other-time,.smtit{color:@gray-light;font-size:@font-size-sm;}
 .select-other-time{margin-top:30px;}
-.year,h3{color:@black;font-size:90%;font-weight:600;padding:10px 0;}
+.year,h3{color:@black;font-size:@font-size-normal;font-weight:600;padding:10px 0;}
 .radioLg{
     background-color:@gray-lighter;
     border:1px solid @gray-border;
@@ -108,7 +108,7 @@ h2{color:@black;font-size:@font-size-md;font-weight: bold;padding:10px 0 12px;}
 .radioLg.selected{border:1px solid @green;}
 .selected span{color:@white;background-color:@green;}
 
-.syDay .radioSm{
+.radioSm{
     background-color:@gray-lighter;
     border:1px solid @gray-border;
     text-align: center;
@@ -118,6 +118,10 @@ h2{color:@black;font-size:@font-size-md;font-weight: bold;padding:10px 0 12px;}
     display: inline-block;
     span{color:@black;font-size:90%;width:60px;height:40px;line-height: 40px;text-align: center;margin: 5px auto;display: inline-block;}
 }
-.syDay .radioSm.selected{border:1px solid @turquoise;}
-.syDay .radioSm.selected span{background-color: @turquoise;}
+.radioSm.selected{
+    border:1px solid @turquoise;
+    span{
+        background-color: @turquoise;
+    }
+}
 </style>

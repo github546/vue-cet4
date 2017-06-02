@@ -9,6 +9,9 @@ require('!style-loader!css-loader!less-loader!./assets/css/main.less');
 import Index from './page/Index.vue'
 import Creat from './page/Creat.vue'
 import CreatSelect from './page/CreatSelect.vue'
+import CreatFinish from './page/CreatFinish.vue'
+import CreatSucceed from './page/CreatSucceed.vue'
+import ErrorPage from './page/ErrorPage.vue'
 import Page404 from './page/Page404.vue'
 
 const router = new VueRouter({
@@ -19,6 +22,9 @@ const router = new VueRouter({
         {path:'/index',component:Index},
 	    {path:'/creat',component:Creat},
         {path:'/creatselect',component:CreatSelect},
+        {path:'/creatfinish',component:CreatFinish},
+        {path:'/creatsucceed',component:CreatSucceed},
+        {path:'/errorpage',component:ErrorPage},
         {path:'*',component:Page404}
 	]
 })

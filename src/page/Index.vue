@@ -1,6 +1,6 @@
 <template>
 	<div id="index">
-		<div @click="goCreat">this is index</div>
+		<div @click="toCreat">this is index</div>
 	</div>
 </template>
 
@@ -8,7 +8,7 @@
 export default{
 	name:'index',
 	methods:{
-		goCreat:function(){
+		toCreat:function(){
 			this.$router.push({path:'/creat'})
 		}
 	}

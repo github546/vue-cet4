@@ -7,7 +7,7 @@
             <p class="text-indent">当然你不会感觉到枯燥，养成式记忆办法，规划了单词的遗忘曲线，同时，你可以邀请更多的小伙伴一起参与，或加入更多社区。有趣的单词接龙，俚语猜猜看，作文漂流瓶，更多的活动和游戏，来吧！美哒哒的学英语。</p>
             <p class="text-align-right">会会</p>
         </div>
-        <BottomBtn @click.native="goCreatSelect"  value="创建计划" color="bg-orange"></BottomBtn>
+        <BottomBtn @click.native="toCreatSelect"  value="创建计划" color="bg-orange"></BottomBtn>
 	</div>
 </template>
 
@@ -18,7 +18,7 @@ export default{
 	name:'creat',
     components:{ HeaderLg,BottomBtn },
 	methods:{
-		goCreatSelect:function(){
+		toCreatSelect:function(){
 			this.$router.push({path:'/creatselect'})
 		}
 	}
@@ -27,6 +27,6 @@ export default{
 
 <style lang="less" scoped>
 @import "../assets/css/variables.less";
-.text-text{font-size:95%;}
+.text-text{font-size:@font-size-normal;}
 p{padding-bottom:6px;line-height: 20px;}
 </style>

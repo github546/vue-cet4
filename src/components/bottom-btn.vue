@@ -24,7 +24,7 @@ export default{
 @import "../assets/css/variables.less";
 /*#bottom-btn{width:100%;  background:rgba(255,255,255,.8); background:url(../../static/images/opacity.png) repeat; }*/
 .btn{
-    color: @white;background: @orange;border-radius:@border-radius;font-size:@font-size-md;
+    color: @white;background: @orange;border-radius:@border-radius-md;font-size:@font-size-md;
     width:86%;display: block;margin:10px auto;height:40px;line-height: 40px;box-shadow:0 2px #e2e2e2;border:none;outline: none;text-align: center;letter-spacing:2px;
 }
 </style>
