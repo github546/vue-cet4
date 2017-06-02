@@ -40,7 +40,7 @@
 </template>
 
 <script>
-import BottomBtn from '../components/bottom-btn.vue'
+import BottomBtn from '../components/BottomBtn.vue'
 export default{
     name:'creatSelect',
     data(){

@@ -22,8 +22,8 @@ import Vue from 'vue'
 import VueResource from 'vue-resource'
 Vue.use(VueResource)
 
-import HeaderLg from '../components/header-bg.vue'
-import BottomBtn from '../components/bottom-btn.vue'
+import HeaderLg from '../components/HeaderLg.vue'
+import BottomBtn from '../components/BottomBtn.vue'
 export default{
     name:'creatFinish',
     data(){
@@ -36,7 +36,6 @@ export default{
     components:{ HeaderLg,BottomBtn },
     methods:{
         toCreatSucceed:function(){
-            //this.$router.push({path:'/creatsucceed'})
             var that = this
             if(that.name.length > 0 && that.mobile.length > 0)
             {

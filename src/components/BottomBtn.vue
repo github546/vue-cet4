@@ -1,12 +1,12 @@
 <template>
-    <div id="bottom-btn">
+    <div id="bottomBtn">
         <button class="btn" :class="className">{{value}}</button>
     </div>
 </template>
 
 <script>
 export default{
-    name:'bottom-btn',
+    name:'bottomBtn',
     props:['value','color'],
     computed:{
         className:function(){

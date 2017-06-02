@@ -12,8 +12,8 @@
 </template>
 
 <script>
-import HeaderLg from '../components/header-bg.vue'
-import BottomBtn from '../components/bottom-btn.vue'
+import HeaderLg from '../components/HeaderLg.vue'
+import BottomBtn from '../components/BottomBtn.vue'
 export default{
 	name:'creat',
     components:{ HeaderLg,BottomBtn },

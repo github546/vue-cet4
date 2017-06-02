@@ -1,5 +1,5 @@
 <template>
-    <div id="header-bg" class="padding-md">
+    <div id="headerLg" class="padding-md">
         <h3>{{bigtitle}}</h3>
         <h4>{{notetitle}}</h4>
     </div>
@@ -7,14 +7,14 @@
 
 <script>
 export default{
-    name:'header-bg',
+    name:'headerLg',
     props:['bigtitle','notetitle']
 }
 </script>
 
 <style lang="less" scoped>
 @import "../assets/css/variables.less";
-#header-bg{
+#headerLg{
     width:100%;
     height: 100px;
     box-shadow: 0 3px 6px #ddd;
