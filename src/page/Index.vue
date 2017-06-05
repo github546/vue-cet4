@@ -7,7 +7,7 @@
         <speed class="animated pulse"></speed>
         <!--底部按钮-->
         <div class="doubleBtn bottomBtn">
-            <div class="btnLeft bg-green">继续计划</div>
+            <div class="btnLeft bg-green" @click="go([$router,'plan'])">继续计划</div>
             <div class="btnRight bg-orange" @click="go([$router,'revisebegin'])">复习加经验</div>
         </div>
 	</div>

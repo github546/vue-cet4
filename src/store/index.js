@@ -14,8 +14,8 @@ xmlhttp.onreadystatechange = function(){
         state = {serverIP:0}
     }
 }
-xmlhttp.open("Get","http://192.168.31.160/json/users.php",false);
-//xmlhttp.open("Get","http://192.168.1.233/json/users.php",false);
+// xmlhttp.open("Get","http://192.168.31.160/json/users.php",false);
+xmlhttp.open("Get","http://192.168.1.233/json/users.php",false);
 xmlhttp.send();
 //console.log(state);
 

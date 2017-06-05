@@ -14,6 +14,7 @@ import CreatSucceed from './page/CreatSucceed.vue'
 import ReviseBegin from './page/ReviseBegin.vue'
 import Revise from './page/Revise.vue'
 import ReviseError from './page/ReviseError.vue'
+import Plan from './page/Plan.vue'
 import ErrorPage from './page/ErrorPage.vue'
 import Page404 from './page/Page404.vue'
 
@@ -30,6 +31,7 @@ const router = new VueRouter({
         {path:'/revisebegin',component:ReviseBegin},
         {path:'/revise',component:Revise},
         {path:'/reviseerror',component:ReviseError},
+        {path:'/plan',component:Plan},
         {path:'/errorpage',component:ErrorPage},
         {path:'*',component:Page404}
 	]

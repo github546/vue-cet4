@@ -92,7 +92,7 @@ export default{
 		float: right;
 		font-size:200%;
 		font-weight: normal;
-		color: @orange; 
+		color: @orange;
 	}
 }
 .tit{
