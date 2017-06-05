@@ -77,12 +77,14 @@ export default{
     },
     watch:{
         curnum:function(newval,oldval){
-            if(newval < this.allnum){
+            if(newval <= this.allnum){
                 setTimeout(()=>{
                     this.getForm();
                 },5000)
             }else{
-                this.$router.push({path:'/index'})
+                setTimeout(()=>{
+                    this.$router.push({path:'/index'})
+                },5000)
             }
         }
     },
