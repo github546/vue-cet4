@@ -69,6 +69,7 @@ export default{
 
 <style lang="less" scoped>
 @import "../assets/css/variables.less";
+#creatFinish{height: 100%;}
 h2{font-size:@font-size-normal;font-weight: 600;padding:10px 0;}
 input{border:0;outline: none;border-radius: @border-radius-sm;border-bottom: 1px solid @gray-lighter;font-size:@font-size-sm;height:30px;width:100%;color:@gray-dark;}
 .radioSm{

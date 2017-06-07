@@ -11,5 +11,6 @@ export default{
 </script>
 
 <style scoped>
+#errorPage{height: 100%;}
 img{width: 100%;margin:80px auto;}
 </style>

@@ -32,6 +32,7 @@ export default{
 
 <style lang="less" scoped>
 @import "../assets/css/variables.less";
+#creatSucceed{height:100%;}
 .succeed{color:@gray-dark;text-align: center;font-size:@font-size-lg;padding:100px 0 10px;}
 .yjz{
     color:@gray;font-size:@font-size-sm;text-align: center;padding-bottom: 100px;

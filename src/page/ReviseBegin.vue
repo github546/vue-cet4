@@ -54,7 +54,7 @@ export default{
 
 <style lang="less" scoped>
 @import "../assets/css/variables.less";
-#reviseBegin{background-color: @bg-gray-color;padding: 10px;}
+#reviseBegin{background-color: @bg-gray-color;padding:0 10px;height:100%;}
 .face{margin-bottom: 10px;}
 .textBox{
 	background-color: @white;

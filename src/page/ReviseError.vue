@@ -45,7 +45,7 @@ export default{
 
 <style lang="less" scoped>
 @import "../assets/css/variables.less";
-#reviseError{padding:15px;background:url(../../static/images/tartan.png) repeat;background-size:100px 100px;}
+#reviseError{padding:0 15px;background:url(../../static/images/tartan.png) repeat;background-size:100px 100px;height:100%;}
 .jyz{
 	font-size: @font-size-normal;
 	height: 50px;
@@ -64,7 +64,7 @@ export default{
 	.meaning{
 		padding: 15px;
 		color:@gray;
-		font-size: @font-size-sm; 
+		font-size: @font-size-sm;
 	}
 }
 .xpJian{font-size:300%;text-align: center;}

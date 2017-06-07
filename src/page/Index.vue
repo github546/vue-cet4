@@ -4,7 +4,7 @@
         <leftMenu v-show="$store.state.leftmenuShow"></leftMenu>
         <face></face>
         <div class="more"></div>
-        <speed class="animated pulse"></speed>
+        <speed class="animated pulse" @click.native="go([$router,'plan'])"></speed>
         <!--底部按钮-->
         <div class="doubleBtn bottomBtn">
             <div class="btnLeft bg-green" @click="go([$router,'plan'])">继续计划</div>
@@ -58,6 +58,7 @@ export default{
 
 <style lang="less" scoped>
 @import "../assets/css/variables.less";
+#index{min-height: 100%;}
 .more{width: 36px;height: 11px;background: url(../../static/images/more.png) no-repeat;background-size: 36px 11px;margin:10px auto;}
 .doubleBtn{
     width: 80%;margin:15px auto;height:35px;left: 10%;

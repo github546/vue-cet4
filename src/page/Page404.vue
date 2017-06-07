@@ -12,5 +12,6 @@ export default{
 
 <style lang="less" scoped>
 @import "../assets/css/variables.less";
+#page404{height: 100%;}
 #page404 h2{color:@green;text-align: center;font-size:400%;padding:100px 0;}
 </style>

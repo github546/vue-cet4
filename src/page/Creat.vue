@@ -31,6 +31,7 @@ export default{
 
 <style lang="less" scoped>
 @import "../assets/css/variables.less";
+#creat{height: 100%;}
 .text-text{font-size:@font-size-normal;}
 p{padding-bottom:6px;line-height: 20px;}
 </style>

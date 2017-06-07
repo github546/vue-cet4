@@ -2,7 +2,8 @@
 
 *{margin: 0;padding: 0;}
 body,ol,ul,h1,h2,h3,h4,h5,h6,p,th,td,dl,dd,form,fieldset,legend,input,textarea,select{margin:0;padding:0}
-body{font-size:100%;font-family:HELVETICA;background:#fff;-webkit-text-size-adjust:100%;overflow-x: hidden;}
+html{height:100%;}
+body{font-size:100%;font-family:HELVETICA;background:#fff;-webkit-text-size-adjust:100%;overflow-x: hidden;height:100%; box-sizing: border-box;}
 a{color:#2d374b;text-decoration:none}
 a:hover{color:#cd0200;text-decoration:underline}
 em{font-style:normal}
@@ -11,13 +12,44 @@ img{border:0;vertical-align:middle}
 table{border-collapse:collapse;border-spacing:0}
 p{word-wrap:break-word}
 h1,h2,h3,h4,h5,h6{font-weight: normal;margin: 0;}
-
-.fade-enter-active, .fade-leave-active{
-	transform:translateX(200%);
+#page{height:100%;}
+// .fade-enter-active, .fade-leave-active{
+// 	transform:translateX(200%);
+// }
+// .fade-enter, .fade-leave-active{
+// 	transition:all 0.2s ease;
+// }
+.fade-enter-active {
+  animation-name: fadeInLeft;
+  animation-duration: .25s;
+}
+.fade-leave-active {
+  animation-name: fadeOutRight;
+  animation-duration: .25s;
 }
 .fade-enter, .fade-leave-active{
-	transition:all 0.2s ease;
+opacity: 0;
 }
+// @keyframes fadeInLeft {
+//   0% {
+//     opacity: 0;
+//     transform: translate3d(-100%, 0, 0);
+//   }
+//   to {
+//     opacity: 1;
+//     transform: none;
+//   }
+// }
+// @keyframes fadeOutRight {
+//   0% {
+//     opacity: 1;
+//   }
+//   to {
+//     opacity: 0;
+//     transform: translate3d(100%, 0, 0);
+//   }
+// }
+
 .fl{
 	float:left
 }

@@ -46,9 +46,9 @@ export default{
 
 <style lang="less" scoped>
 @import "../assets/css/variables.less";
-#planShow{background-color:@bg-gray-color;padding-bottom:70px}
+#planShow{background-color:@bg-gray-color;min-height: 100%;}
 .formList{
-    margin: 10px;
+    margin: 10px 10px 70px;
     li{
         margin-bottom: 10px;background-color:@white;
     }

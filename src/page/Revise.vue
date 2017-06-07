@@ -83,7 +83,7 @@ export default{
 
 <style lang="less" scoped>
 @import "../assets/css/variables.less";
-#revise{padding:15px;}
+#revise{padding:0 15px;height:100%;}
 .jyz{
 	font-size: @font-size-normal;
 	height: 50px;

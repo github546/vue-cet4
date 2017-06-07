@@ -49,7 +49,7 @@ var vm = new Vue({
         come:0
     },
     template:`
-        <div>
+        <div id="page">
             <transition name="fade" mode="out-in">
                 <router-view></router-view>
             </transition>
@@ -58,7 +58,7 @@ var vm = new Vue({
     beforeCreate:function(){
         //和服务器终端连接 跳转
         if(this.$store.state.serverIP == 0){
-            router.push({path:'/error'})
+            router.push({path:'/errorpage'})
         }
         //判断是否为注册用户
         if(this.$store.state.newbi == 1){

@@ -84,7 +84,7 @@ export default{
 
 <style lang="less" scoped>
 @import "../assets/css/variables.less";
-#creatSelect{background:url(../../static/images/tartan.png) repeat;background-size:100px 100px;}
+#creatSelect{background:url(../../static/images/tartan.png) repeat;background-size:100px 100px;height:100%;}
 h2{color:@black;font-size:@font-size-md;font-weight: bold;padding:10px 0 12px;}
 .noteTit{color:@gray-light;font-size:80%;}
 .select-other-time,.smtit{color:@gray-light;font-size:@font-size-sm;}

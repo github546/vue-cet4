@@ -25,12 +25,17 @@ select {
   margin: 0;
   padding: 0;
 }
+html {
+  height: 100%;
+}
 body {
   font-size: 100%;
   font-family: HELVETICA;
   background: #fff;
   -webkit-text-size-adjust: 100%;
   overflow-x: hidden;
+  height: 100%;
+  box-sizing: border-box;
 }
 a {
   color: #2d374b;
@@ -66,13 +71,20 @@ h6 {
   font-weight: normal;
   margin: 0;
 }
-.fade-enter-active,
+#page {
+  height: 100%;
+}
+.fade-enter-active {
+  animation-name: fadeInLeft;
+  animation-duration: .25s;
+}
 .fade-leave-active {
-  transform: translateX(200%);
+  animation-name: fadeOutRight;
+  animation-duration: .25s;
 }
 .fade-enter,
 .fade-leave-active {
-  transition: all 0.2s ease;
+  opacity: 0;
 }
 .fl {
   float: left;

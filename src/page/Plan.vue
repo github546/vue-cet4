@@ -50,8 +50,8 @@ export default{
                         this.forms.push(formsTemp[i])
                     }
                     this.$store.state.planForm=this.forms;
-                    // this.allnum=this.forms.length
-                    this.allnum =2;
+                    this.allnum=this.forms.length
+                    // this.allnum =2;
                 //}
             },function(data){
                 this.$router.push({path:'/errorpage'})
@@ -99,6 +99,7 @@ export default{
 
 <style lang="less" scoped>
 @import "../assets/css/variables.less";
+#plan{height:100%;}
 .planJd{
     width: 100%;text-align:right;color:@gray-light;
     span{
