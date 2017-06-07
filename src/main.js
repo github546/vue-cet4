@@ -2,6 +2,14 @@ import Vue from 'vue'
 import store from './store/index'
 import VueRouter from 'vue-router'
 Vue.use(VueRouter)
+import VueLazyload from 'vue-lazyload'
+Vue.use(VueLazyload, {
+    preLoad: 1.3,
+    error: require('../static/images/loading-3.gif'),
+    loading: require('../static/images/loading-3.gif'),
+    attempt: 1,
+    listenEvents: [ 'scroll', 'mousewheel' ]
+})
 
 require('!style-loader!css-loader!less-loader!./assets/css/main.less');
 require('!style-loader!css-loader!less-loader!./assets/css/animate.min.css');
@@ -34,8 +42,7 @@ const router = new VueRouter({
         {path:'/reviseerror',component:ReviseError},
         {path:'/plan',component:Plan},
         {path:'/planshow',component:PlanShow},
-        {path:'/errorpage',component:ErrorPage},
-        {path:'*',component:Page404}
+        {path:'/errorpage',component:ErrorPage}
 	]
 })
 
