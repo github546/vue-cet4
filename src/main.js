@@ -15,6 +15,7 @@ import ReviseBegin from './page/ReviseBegin.vue'
 import Revise from './page/Revise.vue'
 import ReviseError from './page/ReviseError.vue'
 import Plan from './page/Plan.vue'
+import PlanShow from './page/PlanShow.vue'
 import ErrorPage from './page/ErrorPage.vue'
 import Page404 from './page/Page404.vue'
 
@@ -22,7 +23,7 @@ const router = new VueRouter({
 	mode:'history',
 	base:__dirname,
 	routes:[
-	    {path:'/',component:Index},
+	    {path:'/',component:Index,meta:{title:'首页'}},
         {path:'/index',component:Index},
 	    {path:'/creat',component:Creat},
         {path:'/creatselect',component:CreatSelect},
@@ -32,6 +33,7 @@ const router = new VueRouter({
         {path:'/revise',component:Revise},
         {path:'/reviseerror',component:ReviseError},
         {path:'/plan',component:Plan},
+        {path:'/planshow',component:PlanShow},
         {path:'/errorpage',component:ErrorPage},
         {path:'*',component:Page404}
 	]

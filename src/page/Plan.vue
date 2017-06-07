@@ -1,21 +1,22 @@
 <template>
     <div id="plan" class="padding-md">
-        <div class="firstIn" v-show="firstInShow" v-if="show">
+        <div class="firstIn" v-if="show">
             <p class="p1">学习模式</p>
             <p class="p2">单词会自动播放</p>
             <p class="p3">请用心记忆</p>
-            <p class="p4" @click="closeFirstIn">GO</p>
+            <p class="p4" @click="beginStudy">GO</p>
         </div>
         <p class="planJd"><span>{{curnum}}</span>/{{allnum}}</p>
         <div class="formBox">
             <p class="form">{{nform}}</p>
-            <p class="meaning">n. {{nmeaning}}</p>
+            <p class="ipa"><em>[{{nipa}}]</em></p>
+            <p class="meaning">{{nmeaning}}</p>
         </div>
         <div class="musicBox">
-            <span>学习模式</span>
-            <img src="../../static/images/sound.png" @click="play">
-            <audio id="music">
-                <source :src="nsrc" type="audio/mp3">
+            <span>学习模式<i>（请勿操作）</i></span>
+            <img src="../../static/images/sound.png" @click="">
+            <audio id="music" autoplay="true">
+                <source src="" type="audio/mp3">
            </audio>
         </div>
     </div>
@@ -28,68 +29,70 @@ export default{
         return{
             show:true,
             nform:'',
+            nipa:'',
             nmeaning:'',
-            nsrc:'',
-            curnum:'0',
-            allnum:this.$store.state.oneday
+            curnum:1,
+            allnum:12,
+            forms:[],
+            playnum:0
         }
-    },
-    computed:{
-        firstInShow:function(){
-            if(this.$store.state.readPlan == 0){
-                return true
-            }else{
-                //this.$store.state.readPlan = 1;
-                return false
-            }
-        },
     },
     methods:{
-        closeFirstIn:function(){
+        beginStudy:function(){
             this.show = false;
+            this.playRepeat();//开始学习
         },
         getForm:function(){
-            var state,xmlhttp;
-            xmlhttp = new XMLHttpRequest();
-            xmlhttp.onreadystatechange = function(){
-                if(xmlhttp.readyState == 4 && xmlhttp.status == 200){
-                    state = eval('('+ xmlhttp.responseText +')')
-                }else{
-                    //处理错误
-                    state={form:'',meaning:''}
-                }
-            }
-            xmlhttp.open("Get",'http://'+ this.$store.state.serverIP + '/json/revise.php',false);
-            xmlhttp.send();
-            this.nform = state.form
-            this.nmeaning = state.meaning
-            this.nsrc = 'http://'+ this.$store.state.serverIP + '/sound/'+state.form+'.mp3'
-            if(this.curnum > 0){
-                this.play()
-            }
-            this.curnum ++
+            this.$http.get('http://'+ this.$store.state.serverIP + '/json/plan.php').then(function(response){
+                //if(response.data == 1){
+                    var formsTemp = eval(response.data)
+                    for(var i in formsTemp){
+                        this.forms.push(formsTemp[i])
+                    }
+                    this.$store.state.planForm=this.forms;
+                    // this.allnum=this.forms.length
+                    this.allnum =2;
+                //}
+            },function(data){
+                this.$router.push({path:'/errorpage'})
+            })
         },
-        play:function(){
+        playRepeat:function(){
+            this.nform = this.forms[this.curnum-1].form;
+            this.nipa = this.forms[this.curnum-1].ipa;
+            this.nmeaning = this.forms[this.curnum-1].meaning;
+
             var music = document.getElementById('music');
-            music.currentTime = 0;
-            music.play();
+            music.src = 'http://'+ this.$store.state.serverIP + '/sound/'+ this.nform +'.mp3';
+            //console.log(music.ended)
+            setInterval(()=>{
+                if(this.playnum < 2 && music.ended == true){
+                    music.play();
+                    this.playnum ++;
+                }
+            },1000)
         }
     },
-    watch:{
-        curnum:function(newval,oldval){
-            if(newval <= this.allnum){
-                setTimeout(()=>{
-                    this.getForm();
-                },5000)
-            }else{
-                setTimeout(()=>{
-                    this.$router.push({path:'/index'})
-                },5000)
-            }
-        }
+    beforeMount:function(){
+        this.forms=[]
     },
     mounted:function(){
         this.getForm();
+    },
+    watch:{
+        playnum:function(newval){
+            if(newval == 2){
+                setTimeout(()=>{
+                    if(this.curnum < this.allnum){
+                        this.curnum++;
+                        this.playRepeat();
+                        this.playnum=0
+                    }else{
+                        this.$router.push({path:'/planshow'})
+                    }
+                },5000);
+            }
+        }
     }
 }
 </script>
@@ -109,6 +112,13 @@ export default{
         font-size:300%;
         padding-bottom:15px;
     }
+    .ipa{
+        padding-bottom: 10px;
+        color:@gray-light;
+        em{
+            font-style: italic;
+        }
+    }
     .meaning{
         font-size: @font-size-sm;
         color:@gray;
@@ -122,6 +132,10 @@ export default{
         margin-top: 40px;
         font-size: @font-size-normal;
         color:@gray-dark;
+        i{
+            font-size: @font-size-sm;
+            color:@orange;
+        }
     }
     img{float:right;}
 }
