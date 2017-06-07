@@ -18,9 +18,9 @@
 
 <script>
 //声明http需要引进vue
-import Vue from 'vue'
-import VueResource from 'vue-resource'
-Vue.use(VueResource)
+// import Vue from 'vue'
+// import VueResource from 'vue-resource'
+// Vue.use(VueResource)
 
 import headerLg from '../components/HeaderLg.vue'
 import bottomBtn from '../components/BottomBtn.vue'
@@ -45,7 +45,7 @@ export default{
                 formData.append('sex',that.sex)
                 formData.append('examTime',that.$parent.examTime)
                 formData.append('preExamDay',that.$parent.preExamDay)
-                this.$http.post('http://'+ that.$store.state.serverIP + '/json/post_register.php',formData).then(function(response){
+                that.axios.post('/json/post_register.php',formData).then(function(response){
                     if(response.data == 1){
                         that.$router.push({path:'/creatsucceed'})
                     }

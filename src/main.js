@@ -11,6 +11,19 @@ Vue.use(VueLazyload, {
     listenEvents: [ 'scroll', 'mousewheel' ]
 })
 
+
+import axios from '../node_modules/axios'//注册为全局的函数
+Vue.prototype.axios = axios
+import {stringify} from 'qs'
+axios.defaults.transformRequest = [function(data){
+    data = stringify(data);//stringify:将json 转成后端可接收的数据
+    return data;
+}]
+axios.defaults.baseURL = 'http://192.168.1.233'
+axios.defaults.withCredentials = true//axios 默认不发送cookie，跨域也是一个原因，需要全局设置
+axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded'
+
+
 require('!style-loader!css-loader!less-loader!./assets/css/main.less');
 require('!style-loader!css-loader!less-loader!./assets/css/animate.min.css');
 
@@ -50,6 +63,7 @@ const router = new VueRouter({
 var vm = new Vue({
     router,
     store,
+    axios,
     data:{
         examTime:'2017-6-17',
         preExamDay:'30',
