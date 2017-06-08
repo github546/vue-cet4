@@ -29,22 +29,21 @@ axios.defaults.transformResponse = [function(data){
 }];
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
 //axios.defaults.withCredentials = true //axios 默认为false不发送cookie，如果要发送，需要全局设置改成true，但设置true 跨域会产生问题
-
 //添加拦截器
-// axios.interceptors.request.use(function (config) {//添加一个请求拦截器
-//     // 在发送请求之前做点什么事
-//     return config;
-// }, function (error) {
-//     // 请求失败做点什么
-//     return Promise.reject(error);
-// });
-// axios.interceptors.response.use(function (response) {//添加一个响应拦截器
-//     // 对响应数据做点什么
-//     return response.data;
-// }, function (error) {
-//     // 响应失败做点什么
-//     return Promise.reject(error);
-// });
+axios.interceptors.request.use(function (config) {//添加一个请求拦截器
+    // 在发送请求之前做点什么事
+    return config;
+}, function (error) {
+    // 请求失败做点什么
+    return Promise.reject(error);
+});
+axios.interceptors.response.use(function (response) {//添加一个响应拦截器
+    // 对响应数据做点什么
+    return response;
+}, function (error) {
+    // 响应失败做点什么
+    return Promise.reject(error);
+});
 
 
 require('!style-loader!css-loader!less-loader!./assets/css/main.less');
@@ -89,8 +88,7 @@ var vm = new Vue({
     axios,
     data:{
         examTime:'2017-6-17',
-        preExamDay:'30',
-        come:0
+        preExamDay:'30'
     },
     template:`
         <div id="page">

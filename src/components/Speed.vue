@@ -64,7 +64,7 @@ export default{
     margin-top: 65px;
     font-size: @font-size-lg;
 }
-#speed{width: 100%;margin: 25px auto;}
+#speed{width:170px;margin: 25px auto;}
 #main{
     width: 170px;
     margin: 0 auto;
@@ -99,6 +99,7 @@ export default{
     line-height: 200px;
     width: 170px;
     height: 170px;
+    font-size:@font-size-normal;
     text-align: center;
 }
 #circles{

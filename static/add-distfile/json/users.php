@@ -1,6 +1,6 @@
 {
     serverIP:'192.168.1.233',
-    newbi:'1',
+    newbi:'0',
     leftmenuShow:false,
     openid:'o4grovzHZW1jVksBAVWoU_tstwdQ',
     headimgurl:'',

@@ -35,13 +35,6 @@ export default{
     methods:{
         toCreatSucceed:function(){
             var that = this
-            var data ={
-                name:that.name,
-                mobile:that.mobile,
-                sex:that.sex,
-                examTime:that.examTime,
-                preExamDay:that.preExamDay
-            }
             if(that.name.length > 0 && that.mobile.length > 0)
             {
                 // var formData = new FormData()

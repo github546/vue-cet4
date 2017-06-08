@@ -4,7 +4,15 @@
         <leftMenu v-show="$store.state.leftmenuShow"></leftMenu>
         <face></face>
         <div class="more"></div>
-        <speed class="animated pulse" @click.native="go([$router,'plan'])"></speed>
+        <speed class="animated pulse speed" @click.native="go([$router,'plan'])"></speed>
+        <div class="planList">
+            <div :class="{planBox:true,nocompleted:!list.finish}" v-for="list in plists">
+                <p class="hd">{{list.date}}计划</p>
+                <p class="bd" v-if="list.finish">已完成<span>{{list.msg}}<i>+{{list.memory}}</i></span></p>
+                <p class="bd" v-else>未完成<span>经验-8</span></p>
+            </div>
+        </div>
+        <div class="planlistMore" v-text="jiazaiTxt"></div>
         <!--底部按钮-->
         <div class="doubleBtn bottomBtn">
             <div class="btnLeft bg-green" @click="go([$router,'plan'])">继续计划</div>
@@ -22,6 +30,16 @@ import speed from '../components/Speed.vue'
 export default{
     name:'index',
     components:{ headerMd,leftMenu,face,speed},
+    data(){
+        return{
+            jiazaiTxt:'滑动加载更多',
+            plistdata:'',
+            plists:[],//分页数据
+            alllistnum:'',//总条数
+            allpage:'',//总页数
+            curpage:1//当前页数
+        }
+    },
     computed:{
         ...mapGetters([
             'stime'
@@ -30,7 +48,51 @@ export default{
     methods:{
         ...mapMutations([
             'go'
-        ])
+        ]),
+        getPlanList:function(p){
+            var that = this
+            that.axios.post('/json/planlist.php',{
+                parmas:{
+                    page:p
+                }
+            }).then(function(response){
+                //if(response.data == 1){
+                    that.plistdata= eval('('+ response.data +')')
+                    that.allpage = that.plistdata.pagesize
+                    for(var i in that.plistdata.list){
+                        that.plists.push(that.plistdata.list[i])
+                    }
+                //}
+            },function(data){
+                that.$router.push({path:'/errorpage'})
+            })
+        },
+        scrollFunc:function(e){
+            let that = this
+            let windowHeight = window.screen.height//可见高度
+            let scrollHeight = document.body.scrollTop//滚动高度
+            let conHeight = document.documentElement.scrollTop//内容高度
+            if (windowHeight + scrollHeight > conHeight) {
+                if(that.curpage < that.allpage){
+                    that.curpage ++;
+                    console.log(that.curpage)
+                    that.getPlanList(that.curpage)
+                }else{
+                    that.jiazaiTxt=''
+                }
+            }
+        }
+    },
+    created(){
+        //监听滚动事件
+        /*注册事件*/
+        if(document.addEventListener){
+            document.addEventListener('DOMMouseScroll',this.scrollFunc,false);
+         }//W3C
+        window.onmousewheel=document.onmousewheel=this.scrollFunc;
+    },
+    mounted(){
+        this.getPlanList()
     }
     // mounted:function(){//生命周期里的一个方法
     //     //用同步的ajax方法获取和服务器交换了一下数据，赋值给state
@@ -60,8 +122,10 @@ export default{
 @import "../assets/css/variables.less";
 #index{min-height: 100%;}
 .more{width: 36px;height: 11px;background: url(../../static/images/more.png) no-repeat;background-size: 36px 11px;margin:10px auto;}
+.speed{width:170px;height:170px;border-radius: 50%;}
 .doubleBtn{
-    width: 80%;margin:15px auto;height:35px;left: 10%;
+    width: 80%;margin:0 auto;padding:15px 10%; height:35px;left:0;
+     background:rgba(255,255,255,1);
     div{
         display: inline-block;
         width: 50%;
@@ -82,4 +146,47 @@ export default{
         border-bottom-right-radius: @border-radius-lg;
     }
 }
+.planList{
+    margin:40px 15px  15px;
+    .planBox{
+        height:70px;
+        width:100%;
+        font-size:@font-size-sm;
+        border:1px solid #eee;
+        margin-bottom: 10px;
+        .hd{
+            height:30px;
+            line-height:30px;
+            padding-left: 10px;
+            color:@gray-light;
+            border-bottom:1px solid #eee;
+            background-color:#f1f1f1;
+        }
+        .bd{
+            height:40px;
+            line-height:40px;
+            padding: 0 10px;
+            color:@gray;
+            span{
+                float:right;
+                i{
+                    color:@orange;
+                }
+            }
+        }
+    }
+    .nocompleted{
+        border:1px solid @green;
+        .hd{
+            background-color:@green;
+            color:@white;
+        }
+        .bd{
+            span{
+                color:@green;
+            }
+        }
+    }
+}
+.planlistMore{height:12px; margin-bottom:85px;text-align:center;font-size:@font-size-sm;color:#bbb;}
 </style>
