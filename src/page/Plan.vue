@@ -43,18 +43,19 @@ export default{
             this.playRepeat();//开始学习
         },
         getForm:function(){
-            this.$http.get('http://'+ this.$store.state.serverIP + '/json/plan.php').then(function(response){
+            var that = this
+            that.axios.post('/json/plan.php').then(function(response){
                 //if(response.data == 1){
                     var formsTemp = eval(response.data)
                     for(var i in formsTemp){
-                        this.forms.push(formsTemp[i])
+                        that.forms.push(formsTemp[i])
                     }
-                    this.$store.state.planForm=this.forms;
-                    this.allnum=this.forms.length
+                    that.$store.state.planForm=that.forms;
+                    that.allnum=that.forms.length
                     // this.allnum =2;
                 //}
             },function(data){
-                this.$router.push({path:'/errorpage'})
+                that.$router.push({path:'/errorpage'})
             })
         },
         playRepeat:function(){
@@ -88,6 +89,7 @@ export default{
                         this.playRepeat();
                         this.playnum=0
                     }else{
+                        this.$store.state.percent = this.$store.state.percent + 5
                         this.$router.push({path:'/planshow'})
                     }
                 },5000);

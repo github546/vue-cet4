@@ -17,11 +17,9 @@
 </template>
 
 <script>
-//声明http需要引进vue
 // import Vue from 'vue'
 // import VueResource from 'vue-resource'
 // Vue.use(VueResource)
-
 import headerLg from '../components/HeaderLg.vue'
 import bottomBtn from '../components/BottomBtn.vue'
 export default{
@@ -37,15 +35,35 @@ export default{
     methods:{
         toCreatSucceed:function(){
             var that = this
+            var data ={
+                name:that.name,
+                mobile:that.mobile,
+                sex:that.sex,
+                examTime:that.examTime,
+                preExamDay:that.preExamDay
+            }
             if(that.name.length > 0 && that.mobile.length > 0)
             {
-                var formData = new FormData()
-                formData.append('name',that.name)
-                formData.append('mobile',that.mobile)
-                formData.append('sex',that.sex)
-                formData.append('examTime',that.$parent.examTime)
-                formData.append('preExamDay',that.$parent.preExamDay)
-                that.axios.post('/json/post_register.php',formData).then(function(response){
+                // var formData = new FormData()
+                // formData.append('name',that.name)
+                // formData.append('mobile',that.mobile)
+                // formData.append('sex',that.sex)
+                // formData.append('examTime',that.$parent.examTime)
+                // formData.append('preExamDay',that.$parent.preExamDay)
+                // that.$http.post('http://'+ that.$store.state.serverIP +'/json/post_register.php',formData).then(function(response){
+                //     if(response.data == 1){
+                //         that.$router.push({path:'/creatsucceed'})
+                //     }
+                // },function(data){
+                //     that.$router.push({path:'/errorpage'})
+                // })
+                that.axios.post('/json/post_register.php',{
+                    name:that.name,
+                    mobile:that.mobile,
+                    sex:that.sex,
+                    examTime:that.examTime,
+                    preExamDay:that.preExamDay
+                }).then(function(response){
                     if(response.data == 1){
                         that.$router.push({path:'/creatsucceed'})
                     }

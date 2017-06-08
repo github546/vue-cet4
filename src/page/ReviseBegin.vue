@@ -33,20 +33,24 @@ export default{
     },
     watch:{
     	readReviseRule:function(newval){
-    		console.log(newval)
-    		var formData = new FormData();
+    		var that = this
+    		//var formData = new FormData();
     		if(newval == true){
-    			formData.append("readReviseRule",1)
+    			//formData.append("readReviseRule",1)
+                that.readReviseRule=1
     		}else{
-    			formData.append("readReviseRule",0)
+    			//formData.append("readReviseRule",0)
+                that.readReviseRule=0
     		}
-    		this.$http.post('http://'+ this.$store.state.serverIP + '/json/updateuser.php',formData).then(function(response){
-    				if(response.data == 0){
-                        that.$router.push({path:'/errorpage'})
-                    }
-                },function(data){
-                    this.$router.push({path:'/errorpage'})
-                })
+    		that.axios.post('/json/updateuser.php',{
+                readReviseRule:that.readReviseRule
+            }).then(function(response){
+				if(response.data == 0){
+                    that.$router.push({path:'/errorpage'})
+                }
+            },function(data){
+                this.$router.push({path:'/errorpage'})
+            })
     	}
     }
 }

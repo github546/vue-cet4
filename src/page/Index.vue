@@ -31,28 +31,28 @@ export default{
         ...mapMutations([
             'go'
         ])
-    },
-    mounted:function(){//生命周期里的一个方法
-        //用同步的ajax方法获取和服务器交换了一下数据，赋值给state
-        if(this.$parent.come == 0){
-            this.$parent.come =+1;
-            //console.log(this.$parent.come)
-        }else{//第一次进首页不执行
-            //重写读取
-            var state,xmlhttp;
-            xmlhttp = new XMLHttpRequest();
-            xmlhttp.onreadystatechange = function(){
-                if(xmlhttp.readyState == 4 && xmlhttp.status == 200){
-                    state = eval('('+ xmlhttp.responseText +')')
-                }else{
-                    //处理错误
-                }
-            }
-            xmlhttp.open("Get",'http://'+ this.$store.state.serverIP + '/json/users.php?date='+this.stime,false);//①如果经常刷新首页，服务器cup压力就比较大，需要传个时间函数传给后端的服务器判断，比如?time=，几分钟后再来访问；②url传个date值，减少缓存，使服务器获取时间值之后几秒钟刷新一下或者其他
-            xmlhttp.send();
-            this.$store.state.percent = state.percent;
-        }
     }
+    // mounted:function(){//生命周期里的一个方法
+    //     //用同步的ajax方法获取和服务器交换了一下数据，赋值给state
+    //     if(this.$parent.come == 0){
+    //         this.$parent.come =+1;
+    //         //console.log(this.$parent.come)
+    //     }else{//第一次进首页不执行
+    //         //重写读取
+    //         var state,xmlhttp;
+    //         xmlhttp = new XMLHttpRequest();
+    //         xmlhttp.onreadystatechange = function(){
+    //             if(xmlhttp.readyState == 4 && xmlhttp.status == 200){
+    //                 state = eval('('+ xmlhttp.responseText +')')
+    //             }else{
+    //                 //处理错误
+    //             }
+    //         }
+    //         xmlhttp.open("Get",'http://'+ this.$store.state.serverIP + '/json/users.php?date='+this.stime,false);//①如果经常刷新首页，服务器cup压力就比较大，需要传个时间函数传给后端的服务器判断，比如?time=，几分钟后再来访问；②url传个date值，减少缓存，使服务器获取时间值之后几秒钟刷新一下或者其他
+    //         xmlhttp.send();
+    //         this.$store.state.percent = state.percent;
+    //     }
+    // }
 }
 </script>
 

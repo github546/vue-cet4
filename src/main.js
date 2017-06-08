@@ -11,17 +11,40 @@ Vue.use(VueLazyload, {
     listenEvents: [ 'scroll', 'mousewheel' ]
 })
 
-
+//引用axios
+//import axios from 'axios'//直接在.vue文件中引入使用
 import axios from '../node_modules/axios'//注册为全局的函数
-Vue.prototype.axios = axios
-import {stringify} from 'qs'
+import {stringify} from 'qs'//引用qs(全局的)，一种转化数据的工具（这个模块在安装axios的时候就已经安装了，不需要另外安装）
+Vue.prototype.axios = axios;
+axios.defaults.baseURL = 'http://192.168.1.233'; // 基础url前缀
+axios.defaults.timeout = 10000; // 设置ajax请求超时时间
 axios.defaults.transformRequest = [function(data){
+    // 这里可以在发送请求之前对请求数据做处理，比如form-data格式化等，这里可以使用开头引入的Qs
     data = stringify(data);//stringify:将json 转成后端可接收的数据
     return data;
-}]
-axios.defaults.baseURL = 'http://192.168.1.233'
-axios.defaults.withCredentials = true//axios 默认不发送cookie，跨域也是一个原因，需要全局设置
-axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded'
+}];
+axios.defaults.transformResponse = [function(data){
+    // 这里提前处理返回的数据
+    return data;
+}];
+axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
+//axios.defaults.withCredentials = true //axios 默认为false不发送cookie，如果要发送，需要全局设置改成true，但设置true 跨域会产生问题
+
+//添加拦截器
+// axios.interceptors.request.use(function (config) {//添加一个请求拦截器
+//     // 在发送请求之前做点什么事
+//     return config;
+// }, function (error) {
+//     // 请求失败做点什么
+//     return Promise.reject(error);
+// });
+// axios.interceptors.response.use(function (response) {//添加一个响应拦截器
+//     // 对响应数据做点什么
+//     return response.data;
+// }, function (error) {
+//     // 响应失败做点什么
+//     return Promise.reject(error);
+// });
 
 
 require('!style-loader!css-loader!less-loader!./assets/css/main.less');
