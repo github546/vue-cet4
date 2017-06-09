@@ -58,6 +58,7 @@ export default{
                     preExamDay:that.preExamDay
                 }).then(function(response){
                     if(response.data == 1){
+                        that.$store.state.xp = parseInt(that.$store.state.xp) + 600//注册成功加600经验值
                         that.$router.push({path:'/creatsucceed'})
                     }
                 },function(data){
