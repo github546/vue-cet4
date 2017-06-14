@@ -1,5 +1,5 @@
 <template>
-    <div id="creatSelect">
+    <div id="creatSelect"  v-title data-title="选择考试时间">
         <div class="padding-md">
             <h2>请选择考试时间</h2>
             <p class="noteTit">大学英语四级考试（CET-4）的考试时间定于每年6月和12月的第三个星期六</p>

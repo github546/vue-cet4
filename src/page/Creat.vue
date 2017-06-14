@@ -1,5 +1,5 @@
 <template>
-	<div id="creat">
+	<div id="creat" v-title data-title="创建计划">
 		<headerLg bigtitle="CET-4" notetitle="四级单词记忆管理"></headerLg>
         <div class="text-text padding-md">
             <p class="text-size-md">Hi,</p>

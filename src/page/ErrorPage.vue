@@ -1,5 +1,5 @@
 <template>
-    <div id="errorPage">
+    <div id="errorPage" v-title data-title="页面出错啦">
         <img src="../../static/images/ErrorPage.png">
     </div>
 </template>

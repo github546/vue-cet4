@@ -1,5 +1,5 @@
 <template>
-    <div id="creatFinish">
+    <div id="creatFinish" v-title data-title="添加注册信息">
         <headerLg bigtitle="CET-4" notetitle="四级单词记忆管理"></headerLg>
         <div class="padding-md">
             <h2>姓名</h2>

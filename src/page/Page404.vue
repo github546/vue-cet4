@@ -1,5 +1,5 @@
 <template>
-    <div id="page404">
+    <div id="page404" v-title data-title="404页面">
         <h2>404</h2>
     </div>
 </template>

@@ -1,5 +1,5 @@
 <template>
-    <div id="reviseError">
+    <div id="reviseError" v-title data-title="答题失败">
         <p class="jyz">经验值{{$store.state.xp}}</p>
         <div class="errorBox">
         	<p class="errorForm">错误答案：{{errorForm}}</p>

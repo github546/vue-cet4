@@ -1,5 +1,5 @@
 <template>
-	<div id="index">
+	<div id="index" v-title data-title="首页">
 		<headerMd title="CET-4" show="y"></headerMd>
         <leftMenu v-show="$store.state.leftmenuShow"></leftMenu>
         <face></face>

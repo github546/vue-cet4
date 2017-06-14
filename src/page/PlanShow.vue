@@ -1,5 +1,5 @@
 <template>
-    <div id="planShow">
+    <div id="planShow" v-title data-title="单词目录">
         <face></face>
         <ul class="formList">
             <li  v-for="list in formLists" :id="list.id" @click="toggle(list.id)">

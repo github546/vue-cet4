@@ -1,5 +1,5 @@
 <template>
-    <div id="plan" class="padding-md">
+    <div id="plan" class="padding-md" v-title data-title="计划中">
         <div class="firstIn" v-if="show">
             <p class="p1">学习模式</p>
             <p class="p2">单词会自动播放</p>
@@ -90,7 +90,7 @@ export default{
                         this.playnum=0
                     }else{
                         this.$store.state.percent = this.$store.state.percent + 5
-                        this.$router.push({path:'/planshow'})
+                        this.$router.push({path:'/plan/planshow'})
                     }
                 },5000);
             }

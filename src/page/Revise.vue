@@ -1,5 +1,5 @@
 <template>
-    <div id="revise">
+    <div id="revise" v-title data-title="复习模式">
        <p class="jyz">经验值{{$store.state.xp}}<span v-if="xpShow" class="animated swing">+1</span></p>
        <p class="tit">请输入听到的单词</p>
        <input type="text" name="" :placeholder="form" class="formInp" v-model="writeForm">

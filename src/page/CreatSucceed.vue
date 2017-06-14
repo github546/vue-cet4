@@ -1,5 +1,5 @@
 <template>
-    <div id="creatSucceed">
+    <div id="creatSucceed" v-title data-title="注册成功">
         <headerMd title="CET-4" show="n"></headerMd>
         <p class="succeed">注册成功</p>
         <p class="yjz"><span>+{{jyzNum}}</span>经验值</p>

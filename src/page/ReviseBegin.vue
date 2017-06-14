@@ -1,5 +1,5 @@
 <template>
-    <div id="reviseBegin">
+    <div id="reviseBegin" v-title data-title="经验欢迎页">
         <face class="face"></face>
         <div class="textBox">
         	<p class="tit">复习的规则：</p>

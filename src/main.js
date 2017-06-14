@@ -16,7 +16,7 @@ Vue.use(VueLazyload, {
 import axios from '../node_modules/axios'//注册为全局的函数
 import {stringify} from 'qs'//引用qs(全局的)，一种转化数据的工具（这个模块在安装axios的时候就已经安装了，不需要另外安装）
 Vue.prototype.axios = axios;
-axios.defaults.baseURL = 'http://192.168.1.233'; // 基础url前缀
+axios.defaults.baseURL = 'http://192.168.1.242'; // 基础url前缀
 axios.defaults.timeout = 10000; // 设置ajax请求超时时间
 axios.defaults.transformRequest = [function(data){
     // 这里可以在发送请求之前对请求数据做处理，比如form-data格式化等，这里可以使用开头引入的Qs
@@ -62,6 +62,13 @@ import PlanShow from './page/PlanShow.vue'
 import ErrorPage from './page/ErrorPage.vue'
 import Page404 from './page/Page404.vue'
 
+const parentCom = {
+    template:`
+        <div>
+            <router-view></router-view>
+        </div>
+    `
+}
 const router = new VueRouter({
 	mode:'history',
 	base:__dirname,
@@ -75,10 +82,22 @@ const router = new VueRouter({
         {path:'/revisebegin',component:ReviseBegin},
         {path:'/revise',component:Revise},
         {path:'/reviseerror',component:ReviseError},
-        {path:'/plan',component:Plan},
-        {path:'/planshow',component:PlanShow},
+        {path:'/plan',component:parentCom,
+            children:[
+                {path:'/',component:Plan},
+                {path:'planshow',component:PlanShow}
+            ]
+        },
+        // {path:'/planshow',component:PlanShow},
         {path:'/errorpage',component:ErrorPage}
 	]
+})
+
+//全局注册指令
+Vue.directive('title', {//设置document title
+  inserted: function (el, binding) {
+    document.title = el.dataset.title
+  }
 })
 
 /* eslint-disable no-new */
