@@ -3,7 +3,7 @@
         <headerLg bigtitle="CET-4" notetitle="四级单词记忆管理"></headerLg>
         <div class="padding-md">
             <h2>姓名</h2>
-            <input v-model="name" type="text" name="" placeholder="建议输入真实姓名，方便好友找到你">
+            <input v-model="name" type="text" name="" placeholder="建议输入真实姓名，方便好友找到你" v-focus>
             <h2>联系电话</h2>
             <input v-model="mobile" type="text" name="" placeholder="(必填)请输入标准的11位手机号码" onkeyup="this.value = this.value.replace(/\D/g,'')" maxlength="11">
             <h2>性别</h2>
@@ -17,11 +17,12 @@
 </template>
 
 <script>
-// import Vue from 'vue'
+//import Vue from 'vue'
 // import VueResource from 'vue-resource'
 // Vue.use(VueResource)
 import headerLg from '../components/HeaderLg.vue'
 import bottomBtn from '../components/BottomBtn.vue'
+
 export default{
     name:'creatFinish',
     data(){
@@ -74,6 +75,13 @@ export default{
             document.getElementById(id).setAttribute("class","radioSm selected");
             this.sex = id.replace(/data-/g,'');
             //console.log(this.sex)
+        }
+    },
+    directives:{//局部注册指令
+        focus:{
+　　　　　　 inserted: function (el) {
+                el.focus()// 聚焦元素
+            }
         }
     }
 }
